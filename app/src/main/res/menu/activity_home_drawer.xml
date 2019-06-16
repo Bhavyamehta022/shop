@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/home_nav"
+
+            />
+        <item
+            android:id="@+id/nav_range"
+            android:icon="@drawable/range"
+            android:title="@string/range_nav" />
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/shop_nav" />
+        <item
+            android:id="@+id/nav_near"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/shop_nears_nav" />
+        <item
+            android:id="@+id/nav_wish"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/wish_nav" />
+        <item
+            android:id="@+id/nav_language"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/language" />
+    </group>
+
+    <item >
+        <menu>
+
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/Settings" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Help" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/logout"
+                android:onClick="signOut"/>
+        </menu>
+    </item>
+
+</menu>

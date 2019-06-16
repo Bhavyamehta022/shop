@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "165270245055",
+    "firebase_url": "https://shop-finder-8b1e4.firebaseio.com",
+    "project_id": "shop-finder-8b1e4",
+    "storage_bucket": "shop-finder-8b1e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165270245055:android:f820fca5a7a02000",
+        "android_client_info": {
+          "package_name": "com.bhavya.shopfinderr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165270245055-4d4uq5ich1qk3gshhqucervbfugrbfr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bhavya.shopfinderr",
+            "certificate_hash": "e4f1f29d503823d6844b210b513f89165ae66594"
+          }
+        },
+        {
+          "client_id": "165270245055-1aep4glr7drqrsf1eeg3jkc7v4801cko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj0r_N1PhKK8AqGP6tMvo7p4ZOdUUJTUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165270245055-1aep4glr7drqrsf1eeg3jkc7v4801cko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
