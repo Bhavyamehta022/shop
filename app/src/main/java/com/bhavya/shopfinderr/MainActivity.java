@@ -19,11 +19,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseAuth auth;
     boolean signedIn = false;
     private static final int RC_SIGN_IN = 123;
 
@@ -40,27 +42,31 @@ public class MainActivity extends AppCompatActivity {
                 // Inflate the login page
                 if(signedIn) {
                     //go to home page
-                    openHome();
+                    signOut();
+                    authenticate();
+//                    openHome();
                 } else {
                     // open login page, after successful login set signed in as true and go to home page
                     authenticate();
                     signedIn = true;
-                    openHome();
+//                    openHome();
                 }
             }
-        }, 200);
+        }, 500);
 
     }
 
     private void authenticate()
     {
         //firebase auth
-
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+//        FirebaseApp.initializeApp(this);
+        auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser() != null)
         {
             //already signed in
             signedIn = true;
+            signOut();
+            authenticate();
         }
         else
         {
@@ -89,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
             //successfully signed in
             if (resultCode == RESULT_OK) {
+                Toast.makeText(this, "SignedIN", Toast.LENGTH_SHORT).show();
                 signedIn = true;
                 openHome();
             }else {
@@ -109,6 +116,36 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void signOut()
+    {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.sign_out)
+                .setMessage("You want to sign out?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(R.string.positive_say, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        out();
+                        Toast.makeText(MainActivity.this, "you are now signed out", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(R.string.negative_say, null)
+                .show();
+    }
+
+    public void out()
+    {
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                //user is now signed out
+                //TODO what to do when signed out
+                Intent i = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+    }
+
     public void showSnackbar(int snack)
     {
         //snackbar dikhana nahi ata isliye toast se kaam chala lia bad mein change kar sakte hain
@@ -125,4 +162,5 @@ public class MainActivity extends AppCompatActivity {
     {
         openHome();
     }
+
 }

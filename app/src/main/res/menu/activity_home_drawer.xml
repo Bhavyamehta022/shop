@@ -7,48 +7,39 @@
         >
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/home"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/home_nav"
 
             />
         <item
             android:id="@+id/nav_range"
-            android:icon="@drawable/range"
+            android:icon="@drawable/ic_location_on_black_24dp"
             android:title="@string/range_nav" />
         <item
             android:id="@+id/nav_shop"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_list_black_24dp"
             android:title="@string/shop_nav" />
         <item
             android:id="@+id/nav_near"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_near_me_black_24dp"
             android:title="@string/shop_nears_nav" />
         <item
-            android:id="@+id/nav_wish"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/wish_nav" />
-        <item
             android:id="@+id/nav_language"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/ic_format_color_text_black_24dp"
             android:title="@string/language" />
     </group>
 
-    <item >
+    <item android:title="More">
         <menu>
 
             <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/Settings" />
-            <item
                 android:id="@+id/nav_help"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_help_black_24dp"
                 android:title="@string/Help" />
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/logout"
-                android:onClick="signOut"/>
+                android:icon="@drawable/ic_remove_circle_outline_black_24dp"
+                android:title="@string/logout" />
         </menu>
     </item>
 

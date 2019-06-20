@@ -1,10 +1,13 @@
 package com.bhavya.shopfinderr;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -24,30 +28,47 @@ import com.google.android.gms.tasks.Task;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,Home_Fragment.OnFragmentInteractionListener,Shops_Fragment.OnFragmentInteractionListener,Products_Fragment.OnFragmentInteractionListener,Me_Fragment.OnFragmentInteractionListener  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Home");
+
+        toolbar.setTitle("ShopFinder");
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        TabLayout tabLayout=(TabLayout)findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("Home"));
+        tabLayout.addTab(tabLayout.newTab().setText("Shops"));
+        tabLayout.addTab(tabLayout.newTab().setText("Products"));
+        tabLayout.addTab(tabLayout.newTab().setText("Me"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+//        Button logOut = findViewById(R.id.nav_logout);
+//        logOut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                signOut();
+//            }
+//        });
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -93,15 +114,14 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_near) {
 
-        } else if (id == R.id.nav_wish) {
-
         }
+
+
         else if (id == R.id.nav_language) {
 
         }
-        else if (id == R.id.nav_settings) {
 
-        }
+
         else if (id == R.id.nav_help) {
 
         }
@@ -114,7 +134,7 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
-    public void signOut(View view)
+    public void signOut()
     {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.sign_out)
@@ -138,7 +158,14 @@ public class HomeActivity extends AppCompatActivity
             public void onComplete(@NonNull Task<Void> task) {
                 //user is now signed out
                 //TODO what to do when signed out
+                Intent i = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
