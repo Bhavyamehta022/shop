@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Home_Fragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:layout_height="wrap_content"
+    tools:context=".Home_Fragment"
+    android:layout_marginTop="20sp"
+    android:layout_marginStart="15sp"
+    android:layout_marginEnd="15sp"
+    android:elevation="15sp"
+    >
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/productName"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:id="@+id/productName"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="2sp"
+            android:id="@+id/productImage"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/productprice"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:id="@+id/productPrice"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/productDescription"
+            android:textSize="16sp"
+            android:layout_marginTop="2sp"
+            android:textAlignment="center"
+            android:id="@+id/productDescription"/>
+    </LinearLayout>
 
-</FrameLayout>
+
+
+</android.support.v7.widget.CardView>

@@ -18,6 +18,9 @@
     <string name="logout">Logout</string>
     <string name="skip">Skip sign up</string>
     <string name="hindi">Change language to hindi?</string>
+    <string name="productName">Product Name</string>
+    <string name="productDescription">Product Description</string>
+    <string name="productprice">Product Price</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

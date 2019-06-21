@@ -13,6 +13,7 @@
         android:id="@+id/recycler"
         android:scrollbars="vertical">
 
+
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
