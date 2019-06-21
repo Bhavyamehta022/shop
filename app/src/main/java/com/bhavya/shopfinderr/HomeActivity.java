@@ -195,32 +195,32 @@ public class HomeActivity extends AppCompatActivity
 
     public void signOut()
     {
-//        new AlertDialog.Builder(this)
-//                .setTitle(R.string.sign_out)
-//                .setMessage("You want to sign out?")
-//                .setIcon(android.R.drawable.ic_dialog_alert)
-//                .setPositiveButton(R.string.positive_say, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        out();
-//                        Toast.makeText(HomeActivity.this, "you are now signed out", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .setNegativeButton(R.string.negative_say, null)
-//                .show();
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.sign_out)
+                .setMessage("You want to sign out?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(R.string.positive_say, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        out();
+                        Toast.makeText(HomeActivity.this, "you are now signed out", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(R.string.negative_say, null)
+                .show();
     }
 
     public void out()
     {
-//        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                //user is now signed out
-//                //TODO what to do when signed out
-//                Intent i = new Intent(HomeActivity.this, MainActivity.class);
-//                startActivity(i);
-//            }
-//        });
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                //user is now signed out
+                //TODO what to do when signed out
+                Intent i = new Intent(HomeActivity.this, Splash.class);
+                startActivity(i);
+            }
+        });
     }
     public void onCreated(ViewPager viewPager)
     {
