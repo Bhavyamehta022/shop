@@ -35,43 +35,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Inflate the login page
-                if(signedIn) {
-                    //go to home page
-                    signOut();
-                    authenticate();
-//                    openHome();
-                } else {
-                    // open login page, after successful login set signed in as true and go to home page
-                    authenticate();
-                    signedIn = true;
-//                    openHome();
-                }
-            }
-        }, 500);
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                // Inflate the login page
+//                if(signedIn) {
+//                    //go to home page
+//                    signOut();
+//                    authenticate();
+////                    openHome();
+//                } else {
+//                    // open login page, after successful login set signed in as true and go to home page
+//                    authenticate();
+//                    signedIn = true;
+////                    openHome();
+//                }
+//            }
+//        }, 0);
+
+        authenticate();
 
     }
 
     private void authenticate()
     {
         //firebase auth
-//        FirebaseApp.initializeApp(this);
         auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser() != null)
         {
             //already signed in
             signedIn = true;
-            signOut();
-            authenticate();
+            openHome();
+            Log.i("signIn", "already signed in");
+//            signOut();
+//            authenticate();
         }
         else
         {
+            Log.i("signIn", "notSigned in");
             //not signed in
-
             startActivityForResult(
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
@@ -95,21 +98,23 @@ public class MainActivity extends AppCompatActivity {
 
             //successfully signed in
             if (resultCode == RESULT_OK) {
+                Log.i("signIn", "success");
                 Toast.makeText(this, "SignedIN", Toast.LENGTH_SHORT).show();
                 signedIn = true;
                 openHome();
             }else {
+                Log.i("signIn", "failed");
                 //sign in failed
                 if (response == null)
                 {
                     //user pressed back button
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    startActivity(new Intent(MainActivity.this, Splash.class));
                     showSnackbar(R.string.sign_in_cancelled);
                     return;
                 }
                 if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK)
                 {
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    startActivity(new Intent(MainActivity.this, Splash.class));
                     showSnackbar(R.string.no_internet_connection);
                 }
             }
@@ -139,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 //user is now signed out
-                //TODO what to do when signed out
-                Intent i = new Intent(MainActivity.this, MainActivity.class);
+                // what to do when signed out
+                Intent i = new Intent(MainActivity.this, Splash.class);
                 startActivity(i);
             }
         });

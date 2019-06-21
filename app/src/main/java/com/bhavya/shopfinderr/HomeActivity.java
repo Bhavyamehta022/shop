@@ -66,6 +66,8 @@ public class HomeActivity extends AppCompatActivity
 //        });
     }
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -158,7 +160,7 @@ public class HomeActivity extends AppCompatActivity
             public void onComplete(@NonNull Task<Void> task) {
                 //user is now signed out
                 //TODO what to do when signed out
-                Intent i = new Intent(HomeActivity.this, MainActivity.class);
+                Intent i = new Intent(HomeActivity.this, Splash.class);
                 startActivity(i);
             }
         });

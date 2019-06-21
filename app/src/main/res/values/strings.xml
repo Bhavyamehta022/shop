@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shop Finderr</string>
+    <string name="app_name">Shop Finder</string>
     <string name="signIn">Sign in to your account</string>
     <string name="view_near">View shops near you</string>
     <string name="new_offers">Find new offers </string>
